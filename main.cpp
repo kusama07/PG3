@@ -1,28 +1,25 @@
 ﻿#include <stdio.h>
 
-template<typename Type>
-
-Type min(Type a, Type b) {
-	if (a < b) {
-
-		return a;
+int Recursive(int n) {
+	if (n <= 1) {
+		return (100);
 	}
+
+	return (Recursive(n - 1) * 2 - 50);
 }
 
-template<>
+int general(int n) {
 
-char min<char>(char a, char b) {
-	return printf("数字以外代入できません");
+	return (n * 1072);
 }
 
 int main() {
-	char a = 'a';
-	char b = 'b';
+	int n = 4;
+	int result;
 
-	printf("%d\n", min<int>(2, 4));
-	printf("%f\n", min<float>(100.0f, 200.0f));
-	printf("%lf\n", min<double>(100.12345, 200.12345));
-	printf("%c\n", min<char>(a,b));
+	result = Recursive(n);
 
-	return 0;
+	printf("%d時間働いたら = %d\n", n, result);
+
+	return(0);
 }
