@@ -13,7 +13,6 @@ template<>
 
 char min<char>(char a, char b) {
 	return printf("数字以外代入できません");
-	return 0;
 }
 
 int main() {
