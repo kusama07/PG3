@@ -1,17 +1,16 @@
 ﻿#include <stdio.h>
 #include <windows.h>
 #include <time.h>
+#include <stdlib.h>
 
 typedef void (*PFunc)(int*);
-typedef void (*FFunc)(int*);
-typedef void (*DFunc)(bool *);
 
 void DispResult(int* s) {
-	printf("当たっている\n", *s);
+	printf("当たっている\n");
 }
 
 void No(int* s) {
-	printf("間違っている\n", *s);
+	printf("間違っている\n");
 }
 
 void setTimeout(PFunc p, int second) {
@@ -20,52 +19,41 @@ void setTimeout(PFunc p, int second) {
 	p(&second);
 }
 
-void dice(bool *s,bool *b) {
-
-	char diceChacker;
-	scanf("%s", &diceChacker);
-
-	if (diceChacker == '丁') {
-		*s = true;
-	}
-	else if (diceChacker == '半') {
-		*s = false;
-	}
-	else {
-		printf("丁,半で入力してください", s);
-	}
+void dice(bool *s) {
+	char diceChecker[10];
+	scanf_s("%s", &diceChecker, sizeof(diceChecker));
 
 	int diceNum;
 	diceNum = rand() % 6 + 1;
 
-	if (diceNum % 2 == 0) {
-		*b = true;
+	if (((diceNum % 2 == 0) && (strcmp(diceChecker, "偶数") == 0 || strcmp(diceChecker, "偶数\n") == 0)) ||
+		((diceNum % 2 == 1) && (strcmp(diceChecker, "奇数") == 0 || strcmp(diceChecker, "奇数\n") == 0))) {
+		*s = true;
 	}
 	else {
-		*b = false;
+		*s = false;
 	}
 
-	
-}
+	printf("出目は%dデス", diceNum);
 
-void isAns(int *s) {
 }
 
 int main() {
 	PFunc t;
-	FFunc f;
-
-	DFunc a;
-	DFunc b;
+	PFunc f;
 	
-	bool ans;
+	bool a;
 
 	t = DispResult;
 	f = No;
 	
-	printf("サイコロを振るので、半(奇数),丁(偶数)を予想し入力してください。\n");
+	srand(time(0));
 
-	if (a == b) {
+	printf("サイコロを振るので、奇数,偶数を予想し入力してください。\n");
+
+	dice(&a);
+
+	if (a) {
 		setTimeout(t, 3);
 
 	}
