@@ -20,14 +20,15 @@ void setTimeout(PFunc p, int second) {
 }
 
 void dice(bool *s) {
+
 	char diceChecker[10];
 	scanf_s("%s", &diceChecker, sizeof(diceChecker));
 
 	int diceNum;
 	diceNum = rand() % 6 + 1;
 
-	if (((diceNum % 2 == 0) && (strcmp(diceChecker, "偶数") == 0 || strcmp(diceChecker, "偶数\n") == 0)) ||
-		((diceNum % 2 == 1) && (strcmp(diceChecker, "奇数") == 0 || strcmp(diceChecker, "奇数\n") == 0))) {
+	if (((diceNum % 2 == 0) && strcmp(diceChecker, "偶数") == 0) ||
+		((diceNum % 2 == 1) && strcmp(diceChecker, "奇数") == 0)) {
 		*s = true;
 	}
 	else {
