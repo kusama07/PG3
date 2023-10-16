@@ -3,6 +3,7 @@
 #include <time.h>
 
 typedef void (*PFunc)(int*);
+typedef void (*FFunc)(int*);
 typedef void (*DFunc)(bool *);
 
 void DispResult(int* s) {
@@ -19,16 +20,16 @@ void setTimeout(PFunc p, int second) {
 	p(&second);
 }
 
-void dice(bool s,bool b) {
+void dice(bool *s,bool *b) {
 
 	char diceChacker;
-	scanf_s("%s", &diceChacker);
+	scanf("%s", &diceChacker);
 
 	if (diceChacker == '丁') {
-		s = true;
+		*s = true;
 	}
 	else if (diceChacker == '半') {
-		s = false;
+		*s = false;
 	}
 	else {
 		printf("丁,半で入力してください", s);
@@ -38,10 +39,10 @@ void dice(bool s,bool b) {
 	diceNum = rand() % 6 + 1;
 
 	if (diceNum % 2 == 0) {
-		b = true;
+		*b = true;
 	}
 	else {
-		b = false;
+		*b = false;
 	}
 
 	
@@ -52,17 +53,17 @@ void isAns(int *s) {
 
 int main() {
 	PFunc t;
-	PFunc f;
+	FFunc f;
 
 	DFunc a;
 	DFunc b;
 	
+	bool ans;
+
 	t = DispResult;
 	f = No;
 	
 	printf("サイコロを振るので、半(奇数),丁(偶数)を予想し入力してください。\n");
-
-	dice(a, b);
 
 	if (a == b) {
 		setTimeout(t, 3);
