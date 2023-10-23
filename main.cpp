@@ -5,11 +5,11 @@
 
 typedef void (*PFunc)(int*);
 
-void DispResult(int* s) {
+void CorrectGuess(int* s) {
 	printf("当たっている\n");
 }
 
-void No(int* s) {
+void MissedGuess(int* s) {
 	printf("間違っている\n");
 }
 
@@ -40,26 +40,26 @@ void dice(bool *s) {
 }
 
 int main() {
-	PFunc t;
-	PFunc f;
+	PFunc rightAns;
+	PFunc missedAns;
 	
-	bool a;
+	bool ansFlag;
 
-	t = DispResult;
-	f = No;
+	rightAns = CorrectGuess;
+	missedAns = MissedGuess;
 	
 	srand(time(0));
 
 	printf("サイコロを振るので、奇数,偶数を予想し入力してください。\n");
 
-	dice(&a);
+	dice(&ansFlag);
 
-	if (a) {
-		setTimeout(t, 3);
+	if (ansFlag) {
+		setTimeout(rightAns, 3);
 
 	}
 	else {
-		setTimeout(f, 3);
+		setTimeout(missedAns, 3);
 	}
 
 	return 0;
