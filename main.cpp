@@ -1,26 +1,26 @@
 ﻿#include <stdio.h>
 
-int Recursive(int n) {
+int CalcRecursiveSalary(int n, int result = 100) {
 
 	if (n <= 1) {
-		return (100);
+		return (result);
 	}
 
-	return (Recursive(n - 1) * 2 - 50);
+	return (result + CalcRecursiveSalary(n - 1, result * 2 - 50));
 }
 
-int General(int n) {
+int CalcGeneralSalary(int n) {
 
 	return (n * 1072);
 }
 
 int main() {
-	int n = 12;
+	int n = 8;
 	int result;
 	int generalResult;
 
-	result = Recursive(n);
-	generalResult = General(n);
+	result = CalcRecursiveSalary(n);
+	generalResult = CalcGeneralSalary(n);
 
 	printf("一般的:%d時間働いたら = %d\n", n, generalResult);
 	printf("再帰的:%d時間働いたら = %d\n", n, result);
