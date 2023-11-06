@@ -1,7 +1,6 @@
 #include <iostream>
 
 int main() {
-	char str[] = "あいうえお";
-	printf("%s", str);
+	printf("あいうえお");
 	return 0;
 }
