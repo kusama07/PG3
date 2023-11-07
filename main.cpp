@@ -1,16 +1,19 @@
-#include "Animal.h"
-#include "Dog.h"
-#include "Cat.h"
+#include "Circle.h"
+#include "Rectangle.h"
 
-int main() {
-    Animal* dog = new Dog();
-    Animal* cat = new Cat();
+int main(){
 
-    dog->makeSound(); // "ワンワン"と出力される
-    cat->makeSound(); // "ニャー"と出力される
+	Ishape* circle = new Circle();
+	Ishape* rectangle = new Rectangle();
 
-    delete dog;
-    delete cat;
+	circle->size();
+	rectangle->size();
 
-    return 0;
+	circle->draw();
+	rectangle->draw();
+
+	delete circle;
+	delete rectangle;
+
+	return 0;
 }
