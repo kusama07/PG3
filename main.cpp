@@ -3,8 +3,8 @@
 
 int main(){
 
-	Ishape* circle = new Circle();
-	Ishape* rectangle = new Rectangle();
+	IShape* circle = new Circle();
+	IShape* rectangle = new Rectangle();
 
 	circle->size();
 	rectangle->size();

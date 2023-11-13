@@ -1,6 +1,6 @@
 #pragma once
 
-class Ishape{
+class IShape{
 
 public:
 	virtual void size() = 0;

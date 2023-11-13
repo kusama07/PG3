@@ -2,7 +2,7 @@
 #include "IShape.h"
 #include <stdio.h>
 
-class Rectangle : public Ishape{
+class Rectangle : public IShape{
 
 public:
 	void size() override;

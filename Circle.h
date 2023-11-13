@@ -2,7 +2,7 @@
 #include "Ishape.h"
 #include <stdio.h>
 
-class Circle : public Ishape{
+class Circle : public IShape{
 
 public:
 	void size() override;
