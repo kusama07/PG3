@@ -43,7 +43,7 @@ int main() {
 	PFunc rightAns;
 	PFunc missedAns;
 	
-	bool ansFlag;
+	bool isCorrect;
 
 	rightAns = CorrectGuess;
 	missedAns = MissedGuess;
@@ -52,9 +52,9 @@ int main() {
 
 	printf("サイコロを振るので、奇数,偶数を予想し入力してください。\n");
 
-	dice(&ansFlag);
+	dice(&isCorrect);
 
-	if (ansFlag) {
+	if (isCorrect) {
 		setTimeout(rightAns, 3);
 
 	}
