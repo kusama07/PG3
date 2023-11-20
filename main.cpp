@@ -29,26 +29,24 @@ void dice(DiceFunc s) {
     int diceNum;
     diceNum = rand() % 6 + 1;
 
-    bool ansFlag;
+    bool isCorrect;
 
     if (((diceNum % 2 == 0) && strcmp(diceChecker, "偶数") == 0) ||
         ((diceNum % 2 == 1) && strcmp(diceChecker, "奇数") == 0)) {
-        ansFlag = true;
+        isCorrect = true;
     }
     else {
-        ansFlag = false;
+        isCorrect = false;
     }
 
     printf("出目は%dデス\n", diceNum);
 
-    s(&ansFlag);
+    s(&isCorrect);
 }
 
 int main() {
     PFunc rightAns;
     PFunc missedAns;
-
-    bool ansFlag;
 
     rightAns = CorrectGuess;
     missedAns = MissedGuess;
@@ -57,8 +55,8 @@ int main() {
 
     printf("サイコロを振るので、奇数,偶数を予想し入力してください。\n");
 
-    DiceFunc diceCallback = [&](bool* flag) {
-        if (*flag) {
+    DiceFunc diceResult = [&](bool* isCorrect) {
+        if (*isCorrect) {
             setTimeout(rightAns, 3);
         }
         else {
@@ -66,7 +64,7 @@ int main() {
         }
     };
 
-    dice(diceCallback);
+    dice(diceResult);
 
     return 0;
 }
