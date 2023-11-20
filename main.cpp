@@ -55,13 +55,8 @@ int main() {
 
     printf("サイコロを振るので、奇数,偶数を予想し入力してください。\n");
 
-    DiceFunc diceResult = [&](bool* isCorrect) {
-        if (*isCorrect) {
-            setTimeout(rightAns, 3);
-        }
-        else {
-            setTimeout(missedAns, 3);
-        }
+    DiceFunc diceResult = [rightAns, missedAns](bool* isCorrect) {
+        setTimeout((*isCorrect ? rightAns : missedAns), 3);
     };
 
     dice(diceResult);
